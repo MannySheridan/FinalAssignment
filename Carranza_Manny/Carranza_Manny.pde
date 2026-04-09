@@ -1,5 +1,6 @@
 Player p1, p2;
 CombatSystem combatSystem;
+PlayerCollision playerCollision;
 
 
 boolean[] keys = new boolean[256];
@@ -11,6 +12,7 @@ void setup() {
   p2 = new Player(700, height-100, color(255, 0, 0), false);
   
   combatSystem = new CombatSystem();
+  playerCollision = new PlayerCollision();
 }
 
 void draw() {
@@ -19,6 +21,7 @@ void draw() {
   p1.update();
   p2.update();
   
+  playerCollision.resolve(p1, p2);
   
   combatSystem.handleHit(p1, p2);
   combatSystem.handleHit(p2, p1);
