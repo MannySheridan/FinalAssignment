@@ -11,6 +11,7 @@ class CombatSystem {
           b.health.takeDamage(a.combat.damage);
           
           float dir = (b.x > a.x) ? 1 : -1;
+           b.knockback.apply(dir, a.combat.damage * 3);
         }
         
 

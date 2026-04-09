@@ -3,6 +3,7 @@ class Player {
   Combat combat;
   Health health;
   Block block;
+  Knockback knockback;
   
   float x, y;
   color c;
@@ -18,12 +19,14 @@ class Player {
     combat = new Combat(this);
     health = new Health();
     block = new Block(this);
+    knockback = new Knockback(this);
   }
   
   void update() {
     movement.update();
     block.update();
     combat.update();
+    knockback.update();
   }
   
   void display() {
