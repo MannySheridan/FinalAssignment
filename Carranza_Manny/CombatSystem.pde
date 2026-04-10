@@ -6,6 +6,8 @@ class CombatSystem {
       
       float dist = abs(a.x - b.x);
       
+       if (dist < 50 && b.hitCooldown.canHit()) {
+      
         
         if (!b.block.blocking) {
           b.health.takeDamage(a.combat.damage);
@@ -14,7 +16,8 @@ class CombatSystem {
            b.knockback.apply(dir, a.combat.damage * 3);
         }
         
-
+         b.hitCooldown.trigger();
       }
     }
   }
+} 
