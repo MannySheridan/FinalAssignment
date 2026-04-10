@@ -1,6 +1,6 @@
 class PlayerCollision {
   
-  float w = 40;
+  float w = 40; //Assumes the players are 40 pixels wide
   
   void resolve(Player a, Player b) {
     
@@ -11,9 +11,9 @@ class PlayerCollision {
     float rightB = b.pos.x + w;
     
     // Check collision
-    if (rightA > leftB && leftA < rightB) {
+    if (rightA > leftB && leftA < rightB) { //Checks if Player A's right side passed Player B's left and Player A's left side is before Player B's right
       
-      float overlap = min(rightA - leftB, rightB - leftA);
+      float overlap = min(rightA - leftB, rightB - leftA); // Finds out how much the players are 'inside' each other
       
       // See who is on the left
       if (a.pos.x < b.pos.x) {

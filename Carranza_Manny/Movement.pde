@@ -40,10 +40,10 @@ class Movement {
     p.pos.y += yVel;
     yVel += 0.5;
     
-    if (p.pos.y >= height-100) {
-      p.pos.y = height-100;
-      yVel = 0;
-      onGround = true;
+    if (p.pos.y >= height-100) { //Checks the players vertical position
+      p.pos.y = height-100; // The ground level
+      yVel = 0; // Cancels any downward velocity
+      onGround = true; // Tells the game that the player is standing on the ground and can jump again
     }
     // Screen collision
     p.pos.x = clamp(p.pos.x, 0, width - 40);

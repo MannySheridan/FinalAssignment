@@ -13,6 +13,6 @@ class Block {
       if (keys['f']) blocking = true;
     } else {
       if (keys['l']) blocking = true; 
-    }
+    } //Depending on the side of the player 'F' and 'L' are to block
   }
 }
