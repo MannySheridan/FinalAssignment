@@ -4,36 +4,36 @@ class PlayerCollision {
   
   void resolve(Player a, Player b) {
     
-    float leftA = a.x;
-    float rightA = a.x + w;
+    float leftA = a.pos.x;
+    float rightA = a.pos.x + w;
     
-    float leftB = b.x;
-    float rightB = b.x + w;
+    float leftB = b.pos.x;
+    float rightB = b.pos.x + w;
     
     // Check collision
     if (rightA > leftB && leftA < rightB) {
       
       float overlap = min(rightA - leftB, rightB - leftA);
       
-      // Determine who is on the left
-      if (a.x < b.x) {
+      // See who is on the left
+      if (a.pos.x < b.pos.x) {
         // a is left, b is right
-        a.x -= overlap / 2;
-        b.x += overlap / 2;
+        a.pos.x -= overlap / 2;
+        b.pos.x += overlap / 2;
         
         // Prevents crossing
-        if (a.x > b.x - w) {
-          a.x = b.x - w;
+        if (a.pos.x > b.pos.x - w) {
+          a.pos.x = b.pos.x - w;
         }
       } 
       else {
         // b is left, a is right
-        a.x += overlap / 2;
-        b.x -= overlap / 2;
+        a.pos.x += overlap / 2;
+        b.pos.x -= overlap / 2;
         
         // Prevents crossing
-        if (b.x > a.x - w) {
-          b.x = a.x - w;
+        if (b.pos.x > a.pos.x - w) {
+          b.pos.x = a.pos.x - w;
         }
       }
     }

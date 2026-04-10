@@ -38,17 +38,17 @@ class SpriteSystem {
   }
   
   if (p.facingRight) {
-    image(current, p.x, p.y, 40, 80);
+    image(current, p.pos.x, p.pos.y, 40, 80);
   } 
   else {
     // Apply flip
-    translate(p.x + 40, p.y);
+    translate(p.pos.x + 40, p.pos.y);
     scale(-1, 1);
     
     image(current, 0, 0, 40, 80);
     
     scale(-1, 1);
-    translate(-(p.x + 40), -p.y);
+    translate(-(p.pos.x + 40), -p.pos.y);
   }
 }
   

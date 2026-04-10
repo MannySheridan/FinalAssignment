@@ -7,14 +7,19 @@ class Player {
   HitCooldown hitCooldown;
   SpriteSystem sprite;
   
-  float x, y;
+  PVector pos;
+  PVector vel;
+  PVector acc;
+  
   color c;
   boolean isP1;
   boolean facingRight = true;
   
   Player(float x, float y, color c, boolean isP1) {
-    this.x = x;
-    this.y = y;
+    pos = new PVector(x, y);
+    vel = new PVector(0, 0);
+    acc = new PVector(0, 0);
+    
     this.c = c;
     this.isP1 = isP1;
     
@@ -36,15 +41,15 @@ class Player {
     updateFacing();
   }
   
- void display() {
-  sprite.display();
-}
+  void display() {
+    sprite.display();
+  }
   
   void updateFacing() {
-  if (this == p1) {
-    facingRight = (p1.x < p2.x);
-  } else {
-    facingRight = (p2.x < p1.x);
+    if (this == p1) {
+      facingRight = (p1.pos.x < p2.pos.x);
+    } else {
+      facingRight = (p2.pos.x < p1.pos.x);
+    }
   }
-}
 }

@@ -4,7 +4,7 @@ class CombatSystem {
   void handleHit(Player a, Player b) {
     if (a.combat.attacking && a.combat.attackTimer > 0) {
       
-      float dist = abs(a.x - b.x);
+      float dist = abs(a.pos.x - b.pos.x);
       
        if (dist < 50 && b.hitCooldown.canHit()) {
       
@@ -12,7 +12,7 @@ class CombatSystem {
         if (!b.block.blocking) {
           b.health.takeDamage(a.combat.damage);
           
-          float dir = (b.x > a.x) ? 1 : -1;
+          float dir = (b.pos.x > a.pos.x) ? 1 : -1;
            b.knockback.apply(dir, a.combat.damage * 3);
         }
         
