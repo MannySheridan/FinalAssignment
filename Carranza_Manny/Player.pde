@@ -5,10 +5,12 @@ class Player {
   Block block;
   Knockback knockback;
   HitCooldown hitCooldown;
+  SpriteSystem sprite;
   
   float x, y;
   color c;
   boolean isP1;
+  boolean facingRight = true;
   
   Player(float x, float y, color c, boolean isP1) {
     this.x = x;
@@ -21,7 +23,8 @@ class Player {
     health = new Health();
     block = new Block(this);
     knockback = new Knockback(this);
-     hitCooldown = new HitCooldown();
+    hitCooldown = new HitCooldown();
+    sprite = new SpriteSystem(this);
   }
   
   void update() {
@@ -30,13 +33,18 @@ class Player {
     combat.update();
     knockback.update();
     hitCooldown.update();
+    updateFacing();
   }
   
-  void display() {
-    // Placeholder for now until I add sprites
-    if (block.blocking) fill(0, 255, 255);
-    else fill(c);
-    
-    rect(x, y, 40, 80);
+ void display() {
+  sprite.display();
+}
+  
+  void updateFacing() {
+  if (this == p1) {
+    facingRight = (p1.x < p2.x);
+  } else {
+    facingRight = (p2.x < p1.x);
   }
+}
 }
